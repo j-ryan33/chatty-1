@@ -31,7 +31,8 @@ console.log("test message added.");
 
 
 app.get('/chats', function (req, res) {
-    let all = Messages.find({}).exec();
+    // let all = Messages.find({}).exec();
+    var all = Messages.find().exec();
     all.then((docs, res) => {
         processDisplay(docs, res);
     })
