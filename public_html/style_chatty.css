@@ -1,0 +1,90 @@
+
+body{
+    margin: 0px;
+}
+
+
+.conversation{
+    background-color: rgb(179, 231, 179);
+    height: 70vh;
+    width: 100vw;
+}
+
+.conversation-text-container{
+    padding: 25px;
+    font-family: sans-serif;
+    color: rgb(7, 65, 52);
+    display: block;
+}
+
+.one-message-container{
+    display: inline-flex;
+    padding-top: 10px;
+}
+
+.alias-display-text{
+    /* This is for the alias (BOLDED) */
+    font-weight: bold;
+    padding-right: 10px;
+}
+
+.message-display-text{
+    font-weight: normal;
+}
+
+.timestamp-text{
+    font-weight:lighter;
+    font-size: 10pt;
+    padding-left: 20px;
+}
+
+
+
+.editor{
+    background-color: rgb(7, 65, 52);
+    /* color: rgb(193, 226, 216); */
+    /* color: rgb(179, 231, 179); */
+    color: rgb(218, 240, 218);
+    height: 30vh;
+    width: 100vw;
+}
+
+.editor-text-container{
+    padding: 25px;
+    font-family: sans-serif;
+}
+
+
+input{
+    background-color: rgb(218, 240, 218);
+    font-family: sans-serif;
+    color: rgb(7, 65, 52);
+    padding: 5px;
+    margin-bottom: 15px;
+    font-size: 15pt;
+    margin-left:5px;
+    width: 70vw;    
+}
+
+label{
+    color: rgb(218, 240, 218);
+    font-family: sans-serif;
+    font-size:15pt;
+}
+
+input[id="alias"]{
+    margin-left:42px;
+}
+
+.button-contain{
+    text-align: center;
+}
+
+button{
+    background-color: rgb(218, 240, 218);
+    font-family: sans-serif;
+    color: rgb(7, 65, 52);
+    margin-left: 50px;
+    font-size: 17px;
+    padding: 6px;
+}
