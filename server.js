@@ -4,16 +4,6 @@ const { use } = require('express/lib/application');
 const fs = require('fs');
 const mongoose = require('mongoose');
 const readline = require("readline");
-// import { MongoClient } from 'mongodb';
-
-
-// var Schema = mongoose.Schema;
-
-// const rl = readline.createInterface({
-//  input: process.stdin,
-//  output: process.stdout
-// });
-
 
 // 146.190.13.110
 const app = express();
@@ -22,26 +12,12 @@ app.use(express.static('./public_html'));
 app.listen(port, () => console.log('Chatty server listening on port: ' + port));
 
 const db  = mongoose.connection;
-// const mongoDBURL = 'mongodb://127.0.0.1/chat';
-// const mongoDBURL = 'mongodb+srv://juliaryan:<password>@cluster0.f48qsfp.mongodb.net/?retryWrites=true&w=majority'
-// const mongoDBURL = 'mongodb+srv://chatty-db-2b2a9a25.mongo.ondigitalocean.com';
+
 const mongoDBURL = 'mongodb+srv://doadmin:94B6u27tbJX1P83Q@chatty-db-2b2a9a25.mongo.ondigitalocean.com/admin?tls=true&authSource=admin&replicaSet=chatty-db'
 //94B6u27tbJX1P83Q
 mongoose.connect(mongoDBURL, { useNewUrlParser: true });
 
-// const client = new MongoClient(mongodbURL);
-// db = client.db()
-// db.createUser({
-// user: "newUsername",
-// pwd: "password",
-// roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]
-// })
-
 db.on('error', () => { console.log('MongoDB connection error:') });
-
-
-// db.grantRolesToUser('newUsername',[{ role: "root", db: "admin" }])
-
 
 var Messages = new mongoose.Schema({
     alias: String,
@@ -52,10 +28,6 @@ var msg = db.model("Msg", Messages)
 
 let test = new msg({alias:"kjnkjn", message:"ghgvhgvhgvhg"});
 console.log("test message added.");
-
-// let all = Messages.find({}).exec();
-// console.log("ALL messages:");
-// console.log(all);
 
 
 app.get('/chats', function (req, res) {
@@ -81,8 +53,6 @@ app.post('/chats/post', function (req, res) {
 });
 
 
-
-
 console.log("HERE!")
 test.save().then((huh) => {
     console.log("sender: " + huh.sender);
@@ -93,17 +63,9 @@ test.save().then((huh) => {
 
 
 
-
-
-
-
 function processDisplay(docs, res){
     let output = "\n";
     for (let i=0; i < docs.length; i++){
-        // 1. create div of the class for bolded alias with doc[i].alias
-        // 2. create div of the class for message
-        // 3. create something afterwards for timestamp
-        // 
         /*
         <div class="one-message-container">
           <div class="alias-display-text">Person #1: </div>
