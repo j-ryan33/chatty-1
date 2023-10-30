@@ -1,90 +1,124 @@
-const { MongoClient } = require('mongodb');
-const express = require('express');
-const { use } = require('express/lib/application');
-const fs = require('fs');
 const mongoose = require('mongoose');
-const readline = require("readline");
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const fs = require('fs');
+const crypto = require('crypto');
 
-// 146.190.13.110
+const connection_string = 'mongodb://127.0.0.1/responsibilities';
+
+mongoose.connect(connection_string);
+mongoose.connection.on('error', () => {
+  console.log('There was a problem connecting to mongoDB');
+});
+
+/**
+ * Specify the schema for the database, including items and categories.
+ */
+var ItemSchema = new mongoose.Schema( {
+    name: String,
+    difficulty: Number,
+    stat: String,
+    category: String
+});
+var Item = mongoose.model('Item', ItemSchema);
+var CategorySchema = new mongoose.Schema( {
+  name: String,
+  priority: Number,
+  color: String
+});
+var Category = mongoose.model('Category', CategorySchema);
+
+/**
+ * Initialize the express app and configure with various features 
+ * such as JSON parsing, static file serving, etc.
+ */
 const app = express();
-const port = 3000;
-app.use(express.static('./public_html'));
-app.listen(port, () => console.log('Chatty server listening on port: ' + port));
+app.use(cookieParser());    
+app.use(express.static('public_html'))
+//app.get('/', (req, res) => { res.redirect('/app/index.html'); });
+app.use(express.json())
+//app.use(parser.text({type: '*/*'}));
 
-const db  = mongoose.connection;
-
-const mongoDBURL = 'mongodb+srv://doadmin:94B6u27tbJX1P83Q@chatty-db-2b2a9a25.mongo.ondigitalocean.com/admin?tls=true&authSource=admin&replicaSet=chatty-db'
-//94B6u27tbJX1P83Q
-mongoose.connect(mongoDBURL, { useNewUrlParser: true });
-
-db.on('error', () => { console.log('MongoDB connection error:') });
-
-var Messages = new mongoose.Schema({
-    alias: String,
-    message: String
-  }, {timestamps: true});    
-
-var msg = db.model("Msg", Messages)
-
-let test = new msg({alias:"kjnkjn", message:"ghgvhgvhgvhg"});
-console.log("test message added.");
-
-
-app.get('/chats', function (req, res) {
-    // let all = Messages.find({}).exec();
-    var all = Messages.find().exec();
-    all.then((docs, res) => {
-        processDisplay(docs, res);
-    })
-
+/**
+ * Get all of the items that correspond with a particular catagory.
+ * The category is specified as a part of the URL after /items/.
+ */
+app.get('/items/:cat', (req, res) => {
+    let cat = req.params.cat;
+    let p1 = Item.find({category: cat}).exec();
+    p1.then( (results) => { 
+      res.end( JSON.stringify(results) );
+    });
+    p1.catch( (error) => {
+      console.log(error);
+      res.end('FAIL');
+    });
 });
 
-app.post('/chats/post', function (req, res) {
-    let newAlias = req.body.alias      // "alias"
-    let newMessage = req.body.message  // "message"
-    console.log("given alias: " + newAlias + " and message: '" + newMessage + "'. ");
+app.get('/testing', (req, res, next) => {
+  console.log('A');
+  next();
+});
 
-    let newMsg = new msg({alias: newAlias, message: newMessage});
-    test.save().then((newGuy) => {
-        console.log("sender: " + newGuy.alias);
-        console.log("message: " + newGuy.message);
-        console.log("created at: " + newGuy.createdAt);
-        console.log("...has now been saved.");
-    }) 
+app.get('/testing', (req, res, next) => {
+  console.log('B');
+  next();
+});
+
+app.get('/testing', (req, res) => {
+  console.log('C');
+  res.end('hi')
 });
 
 
-console.log("HERE!")
-test.save().then((huh) => {
-    console.log("sender: " + huh.sender);
-    console.log("message: " + huh.message);
-    console.log("Created at: " + huh.createdAt);
+/**
+ * This route is for creating a new item for a particular category. 
+ * The category that the items belongs to is stored as a part of the item object in the database.
+ */
+app.post('/create/item/', (req, res) => {
+  let newItemToSave = req.body;
+  var newItem = new Item(newItemToSave);
+  let p1 = newItem.save();
+  p1.then( (doc) => { 
+    res.end('SAVED SUCCESFULLY');
+  });
+  p1.catch( (err) => { 
+    console.log(err);
+    res.end('FAIL');
+  });
+});
 
-}) 
+/**
+ * This route is for creating a new list category.
+ */
+app.post('/create/category/', (req, res) => {
+  let CategoryToSave = req.body;
+  var newCategory = new Category(CategoryToSave);
+  let p1 = newCategory.save();
+  p1.then( (doc) => { 
+    res.end('SAVED SUCCESFULLY');
+  });
+  p1.catch( (err) => { 
+    console.log(err);
+    res.end('FAILED TO CREATE A CATEGORY');
+  });
+});
 
+/**
+ * This route is for fetching all of the categories stored in the database.
+ */
+app.get('/categories/', (req, res) => {
+    let p1 = Category.find({}).exec();
+    p1.then( (results) => { 
+      res.end( JSON.stringify(results) );
+    });
+    p1.catch( (error) => {
+      console.log(error);
+      res.end('FAIL');
+    });
+});
 
-
-function processDisplay(docs, res){
-    let output = "\n";
-    for (let i=0; i < docs.length; i++){
-        /*
-        <div class="one-message-container">
-          <div class="alias-display-text">Person #1: </div>
-          <div class="message-display-text">Hello, who is this?</div>
-          <div class="timestamp-text">(August 16, 2029 at 1:55:03pm)</div>
-        </div>  <!-- "one-message-container" -->
-          */
-        enddiv = "</div>\n";
-        output += "<div class='one-message-container'>\n";
-        output += "<div class='alias-display-text'>\n";
-        output += docs[i].alias + enddiv;
-        output += "<div class='message-display-text'>"
-        output += docs[i].message + enddiv;
-        // (timestamp WOULD go here)
-        output += enddiv;
-    }
-    console.log("output to be returned to display messages: \n" + output);
-    res.end(output);
-}
-
+// Start up the server to listen on port 80
+const port = 80;
+app.listen(port, () => { console.log('server has started'); });
 
