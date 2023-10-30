@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser');
 const fs = require('fs');
 const crypto = require('crypto');
 
-const connection_string = 'mongodb://127.0.0.1/responsibilities';
+const connection_string = 'mongodb+srv://doadmin:94B6u27tbJX1P83Q@chatty-db-2b2a9a25.mongo.ondigitalocean.com/admin?tls=true&authSource=admin&replicaSet=chatty-db';
 
 mongoose.connect(connection_string);
 mongoose.connection.on('error', () => {
