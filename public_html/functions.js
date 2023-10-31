@@ -1,15 +1,23 @@
 
-selectedCat = 'Work';
+function createAccount(){
+  let usr = document.getElementById('usrName').value;
+  let pass = document.getElementById('password').value;
+  let p = fetch('/add/user/' + usr + "/" + encodeURIComponent(pass);
+  p.then((response) =>{
+    return response.text();
+  }).then((text) => {
+    alert(text);
+  });
 
-function getCategories() {
-  let url = '/categories/';
-  let p = fetch(url);
-  let ps = p.then( (response) => {
+
+function getUsers() {
+  let p = fetch('/get/users/');
+  let rp = p.then( (response) => {
     return response.json();
   }).then((objects) => { 
     let html = '';
     for (i in objects) {
-      html += '<div onclick="getItemsForCategory(\'' + objects[i].name + '\')" style="cursor:pointer;color:' + objects[i].color + '">' + objects[i].name + '</div>\n'
+      html += '<div>' + objects[i] + '</div>\n'
     }
     let x = document.getElementById('categories');
     x.innerHTML = html;
