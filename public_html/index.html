@@ -1,51 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <link rel="stylesheet" type="text/css" href="./style.css">
-  <script src="./code.js"></script>
-  <title>RESPONSIBILITIES</title>
+  <link rel="stylesheet" type="text/css" href="oosta_style.css">
+  <script src="oosta_functions.js"></script>
+  <title>Oosta</title>
 </head>
-<body>
+<body>  
+    <h1>Add User</h1>
+    <br>
+    <label for="usrName">Username: </label>
+    <input id="usrName" type="text"> 
+    <br>
+    <label for="password">Password: </label>
+    <input id="password" type="text">
+    <br>
+    <input type="button" id="createUserButton" onclick="createUser();" value="Create User">
 
-  <div class="segment" id="responsibilities">
-    <h2>RESPONSIBILITIES</h2>
-  </div>
-  
-  <div class="segment" id="categories"> </div>
-  
-  <div class="segment" id="createCategory">
-    <div>CREATE CAT</div>
-    <br/>
-    <label for="catName">Name</label>
-    <input id="catName" type="text"> </input>
-    <br/>
-    <label for="catPrio">Priority</label>
-    <input id="catPrio" type="number"> </input>
-    <br/>
-    <label for="catColor">Color</label>
-    <input id="catColor" type="color"> </input>
-    <br/>
-    <input type="button" id="createCatButton" onclick="createCategory();" value="Create Item"/>
-  </div>
 
-  <div class="segment" id="items"> </div>
-
-  <div class="segment" id="createItem">
-    <div>CREATE ITEM</div>
-    <br/>
-    <label for="itemName">Name</label>
-    <input id="itemName" type="text"> </input>
-    <br/>
-    <label for="itemStat">Status</label>
-    <input id="itemStat" type="text"> </input>
-    <br/>
-    <label for="itemDifficulty">Difficulty</label>
-    <input id="itemDifficulty" type="number"> </input>
-    <br/>
-    <input type="button" id="createItemButton" onclick="createItem();" value="Create Item"/>
-  </div>
+    <h1>Add Item</h1>
+    <br>
+    <label for="itemTitle">Title:</label>
+    <input id="itemTitle" type="text"> 
+    <br>
+    <label for="itemDesc">Desc:</label>
+    <input id="itemDesc" type="text"> 
+    <br>
+    <label for="itemImage">Image:</label>
+    <input id="itemImage" type="text"> 
+    <br>
+    <label for="itemPrice">Price:</label>
+    <input id="itemPrice" type="text">
+    <br>
+    <label for="itemStat">Status:</label>
+    <input id="itemStat" type="text">
+    <br>
+    <label for="itemUsr">Username:</label>
+    <input id="itemUsr" type="text">
+    <br>
+    <input type="button" id="createItemButton" onclick="createItem();" value="Create Item">
   <script>
-    getCategories();
+    getUsers();
   </script>
 </body>
 </html>
