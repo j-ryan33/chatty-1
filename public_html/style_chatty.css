@@ -1,60 +1,6 @@
-* {
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial;
-    font-size: 15pt;
-    margin: 0px;
-    padding: 0px;
-  }
-  
-  .segment {
-    position: fixed;
-    border: 2px solid black;
-    padding: 10px;
-    overflow-y: scroll;
-  }
-  
-  #responsibilities {
-    top: 0px;
-    left: 0px;
-    width: 100vw;
-    height: 20vh;
-    background-color: #444444;
-    color: white;
-  }
-  
-  #createCategory {
-    top: 20vh;
-    left: 0px;
-    width: 50vw;
-    height: 30vh;
-    background-color: #bbbbbb;
-  }
-  
-  #createItem {
-    top: 20vh;
-    right: 0px;
-    width: 50vw;
-    height: 30vh;
-    background-color: #aabbcc;
-  }
-  
-  #categories {
-    bottom: 0px;
-    left: 0px;
-    width: 50vw;
-    height: 50vh;
-    background-color: #cccccc;
-  }
-  
-  #items {
-    bottom: 0px;
-    right: 0px;
-    width: 50vw;
-    height: 50vh;
-    background-color: #ccddee;
-  }
-  
-  
+input{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
