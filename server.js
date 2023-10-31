@@ -13,6 +13,9 @@ mongoose.connection.on('error', () => {
 app.use(express.static('public_html'))
 app.use(express.json())
 
+const port = 80;
+app.listen(port, () => { console.log('server has started'); });
+
 var Users = new mongoose.Schema( {
   username: String,
   password: String,
@@ -80,7 +83,4 @@ app.post('/add/user/', (req, res) => {
   });
 });
 
-// Start up the server to listen on port 80
-const port = 80;
-app.listen(port, () => { console.log('server has started'); });
 
