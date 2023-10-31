@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const express = require('express');
-// const cookieParser = require('cookie-parser');
 const fs = require('fs');
+const app = express();
 
 const connection = 'mongodb+srv://doadmin:94B6u27tbJX1P83Q@chatty-db-2b2a9a25.mongo.ondigitalocean.com/admin?tls=true&authSource=admin&replicaSet=chatty-db';
 
@@ -9,6 +9,9 @@ mongoose.connect(connection);
 mongoose.connection.on('error', () => {
   console.log('Connection issue with mongoDB :(');
 });
+
+app.use(express.static('public_html'))
+app.use(express.json())
 
 var Users = new mongoose.Schema( {
   username: String,
@@ -29,20 +32,6 @@ var Items = new mongoose.Schema( {
 });
 
 var Item = mongoose.model('Item', Items);
-
-
-const app = express();
-// app.use(cookieParser());    
-app.use(express.static('public_html'))
-//app.get('/', (req, res) => { res.redirect('/app/index.html'); });
-app.use(express.json())
-//app.use(parser.text({type: '*/*'}));
-
-/**
- * Get all of the items that correspond with a particular catagory.
- * The category is specified as a part of the URL after /items/.
- */
-
 
 app.get('/get/users/', (req, res) => {
     let all = User.find({}).exec();
