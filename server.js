@@ -72,7 +72,18 @@ app.get('/get/purchases/:usrnm', (req, res) => {
 
 app.post('/add/user/', (req, res) => {
   let userToBeSaved = req.body;
-  var newUser = new User(userToBeSaved);
+  let usr_name = req.body.username;
+  let pass = req.body.password;
+  console.log("body: " + body);
+  console.log("username (usr_name): " + usr_name);
+  console.log("password (pass): " + pass);
+  
+  // var newUser = new User(userToBeSaved);
+
+  var newUser = new User({
+    'username': usr_name
+    'password': pass
+});
   let newUsr = newUser.save();
   newUsr.then( (doc) => { 
     res.end('SAVED SUCCESFULLY');
