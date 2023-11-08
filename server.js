@@ -5,8 +5,8 @@ const app = express();
 
 
 // const connection = 'mongodb+srv://doadmin:94B6u27tbJX1P83Q@chatty-db-2b2a9a25.mongo.ondigitalocean.com/admin?tls=true&authSource=admin&replicaSet=chatty-db';
-const connection = 'mongodb+srv://doapps-01f70429-fac0-4ba6-83ed-369febb34dfd:H864cjg7BG91Mp32@chatty-db-2b2a9a25.mongo.ondigitalocean.com/admin?authSource=admin&tls=true';
-
+// const connection = 'mongodb+srv://doapps-01f70429-fac0-4ba6-83ed-369febb34dfd:H864cjg7BG91Mp32@chatty-db-2b2a9a25.mongo.ondigitalocean.com/admin?authSource=admin&tls=true';
+const connection = 'mongodb+srv://juliaryan:passwordpassword123@cluster0.f48qsfp.mongodb.net/?retryWrites=true&w=majority'
 
 mongoose.connect(connection);
 mongoose.connection.on('error', () => {
