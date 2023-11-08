@@ -7,6 +7,7 @@ function createUser(){
     }).then((text) => {
       alert(text);
     });
+}
   
   
   function getUsers() {
