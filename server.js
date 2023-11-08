@@ -3,7 +3,10 @@ const express = require('express');
 const fs = require('fs');
 const app = express();
 
-const connection = 'mongodb+srv://doadmin:94B6u27tbJX1P83Q@chatty-db-2b2a9a25.mongo.ondigitalocean.com/admin?tls=true&authSource=admin&replicaSet=chatty-db';
+
+// const connection = 'mongodb+srv://doadmin:94B6u27tbJX1P83Q@chatty-db-2b2a9a25.mongo.ondigitalocean.com/admin?tls=true&authSource=admin&replicaSet=chatty-db';
+const connection = 'mongodb:';
+
 
 mongoose.connect(connection);
 mongoose.connection.on('error', () => {
@@ -122,5 +125,31 @@ app.post('/add/user/', (req, res) => {
     res.end("COULD NOT CREATE USER!!!");
   });
 });
+
+
+
+app.post('/add/user/:usrnam/:psswrd', (req, res) => {
+  // let userToBeSaved = req.params.usrnam;
+  let usr_name = req.params.usrnam;
+  let pass = req.body.psswrd;
+  // console.log("body: " + body);
+  console.log("username (usr_name): " + usr_name);
+  console.log("password (pass): " + pass);
+  // var newUser = new User(userToBeSaved);
+
+  var newUser = new User({
+    'username': usr_name
+    'password': pass
+});
+  let newUsr = newUser.save();
+  newUsr.then( (doc) => { 
+    res.end('SAVED SUCCESFULLY');
+  });
+  newUsr.catch( (err) => { 
+    console.log("COULD NOT CREATE USER!!!");
+    res.end("COULD NOT CREATE USER!!!");
+  });
+});
+
 
 
