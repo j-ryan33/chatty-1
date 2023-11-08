@@ -12,19 +12,19 @@ function createUser(){
   
   function getUsers() {
       let url = '/get/users';
-    let p = fetch(url);
-    let rp = p.then( (response) => {
-      return response.json();
-    }).then((objects) => { 
-      let html = '';
-      for (i in objects) {
-        html += '<div>' + objects[i] + '</div>\n'
-      }
-      let bHTML = document.getElementById('bodyContain');
-      bHTML.innerHTML = html;
-    }).catch(() => { 
-      alert('something went wrong');
-    });
+    // let p = fetch(url);
+    // let rp = p.then( (response) => {
+    //   return response.json();
+    // }).then((objects) => { 
+    //   let html = '';
+    //   for (i in objects) {
+    //     html += '<div>' + objects[i] + '</div>\n'
+    //   }
+    //   let bHTML = document.getElementById('bodyContain');
+    //   bHTML.innerHTML = html;
+    // }).catch(() => { 
+    //   alert('something went wrong');
+    // });
   }
 
 
