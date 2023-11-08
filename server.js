@@ -37,6 +37,21 @@ var Items = new mongoose.Schema( {
 var Item = mongoose.model('Item', Items);
 
 app.get('/get/users/', (req, res) => {
+  console.log("HELLO?!?!?!");
+  alert("hello hello");
+    let all = User.find({}).exec();
+    all.then((results) => { 
+      res.end(JSON.stringify(results));
+    });
+    all.catch((error) => {
+      console.log(error);
+      res.end('NO GOOD.');
+    });
+});
+
+app.post('/get/users/', (req, res) => {
+  console.log("HELLLOOOO (#2??!?!)?!?!?!");
+  alert("IT'S ME!!!!");
     let all = User.find({}).exec();
     all.then((results) => { 
       res.end(JSON.stringify(results));
