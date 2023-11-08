@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <link rel="stylesheet" type="text/css" href="./oosta_style.css">
-  <script type="text/javascript" src="./oosta_functions.js"></script>
-  <title>New Post - Ostaa</title>
-  <style>
-    input{
+input{
     padding-top: 5px;
     padding-bottom: 5px;
     margin-top: 10px;
@@ -118,35 +111,6 @@ th{
     padding-top: 15px;
 }
 
-
-  </style>
-</head>
-
-<body>  
-
-  <div class="ostaaContain">
-    <h1>Ostaa</h1>
-    </div>
-
-<h2>Add a Post</h2>
-  <div class="itemContain">
-    <br>
-    <label for="itemTitle">Title:</label>
-    <input id="itemTitle" type="text"> 
-    <br>
-    <label for="itemDesc">Desc:</label>
-    <input id="itemDesc" type="text"> 
-    <br>
-    <label for="itemPrice">Price:</label>
-    <input id="itemPrice" type="text">
-    <br>
-    <label for="itemStat">Status:</label>
-    <input id="itemStat" type="text">
-    <br>
-    <label for="itemImage">Image:</label>
-    <input id="itemImage" type="text"> 
-    <br>
-    <input type="button" id="createItemButton" onclick="createPostButton();" value="Create Post">
-  </div>
-</body>
-</html>
+/* .itemPrice{
+    text-
+} */

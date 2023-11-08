@@ -1,47 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <script src="./functions.js"></script>
-  <title>Oosta</title>
+  <!-- <meta http-equiv="Content-type" content="text/html; charset=UTF-8"> -->
+  <link rel="stylesheet" type="text/css" href="public_html/oosta_style.css">
+  <script type="text/javascript" src="./oosta_functions.js"></script>
+  <title>Login - Ostaa</title>
+  <style>
+    input{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color: lightcyan;
+    font-family: Georgia;
+}
+h1{
+    color: navy;
+    padding-left: 25px;
+    margin-bottom: -20px;
+    padding-top: 20px;
+}
+h2{
+    color: palevioletred;
+    padding-left: 15px;
+    padding-top: 35px;
+}
+
+label{
+    color: navy;
+    padding-right: 10px;
+}
+div{
+    padding-left: 25px;
+}
+
+.bolded{
+    font-weight: 100;
+}
+
+.itemContain{
+    padding-left: 25px;
+
+}
+
+.ostaaContain{
+    border-bottom: 8px navy solid;
+    width: 100vw;
+    height: 100px;
+    margin-bottom: -20px;
+}
+
+.welcomeMessage_HOME{
+    /* font-weight: 100;
+    font-size: 28px;
+    color: palevioletred;
+    padding-top: 25px; */
+    font-weight: bold;
+    margin-top: 50px;
+}
+
+table{
+    width: 100vw;
+    margin-top: 20px;
+}
+
+th{
+    width: 50vw;
+    font-weight: 100;
+    font-size: 20px;
+    color: palevioletred;
+    padding-top: 25px;
+    border: 2px navy solid;
+}
+
+.homePageButton{
+    width: 300px;
+    height: 50px;
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
+#searchListings{
+    width: 120px;
+    height: 50px;
+}
+
+.homeTextInput{
+    height: 40px;
+}
+
+
+
+
+.singleItemContainer{
+    margin: 10px;
+    border: solid 3px navy;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+
+.itemTitle{
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.itemDesc{
+    text-align: left;
+    color: navy;
+    font-size: 16px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+  </style>
 </head>
 <body>  
+  <div class="ostaaContain">
+  <h1>Ostaa</h1>
+  </div>
+
     <div id="bodyContain">
-    <h1>Add User</h1>
+      <h2>Login</h2>
+      <br>
+      <label for="usrName">Username: </label>
+      <input id="usrNameLogin" type="text"> 
+      <br>
+      <label for="password">Password: </label>
+      <input id="passwordLogin" type="text">
+      <br>
+      <input type="button" id="loginButton" onclick="loginButtonClick();" value="Login">
+      <script>
+        function loginButtonClick(){
+          alert(usrNameLogin.value);
+
+          // 1. get the value of the username (and pass) from the text input fields
+
+          // 2. use Schema.find({username: username})
+
+          // 3. if that's expty, reject the login
+
+          // 4. if it's there, compare its password
+
+          // 5. if password is the same, let them in. Otherwise, reject.
+
+          // 6. (if valid) move them onto the home.html page
+
+        }
+
+      </script>
+
+    <h2>Create Account</h2>
     <br>
     <label for="usrName">Username: </label>
-    <input id="usrName" type="text"> 
+    <input id="usrNameCreate" type="text"> 
     <br>
     <label for="password">Password: </label>
-    <input id="password" type="text">
+    <input id="passwordCreate" type="text">
     <br>
-    <input type="button" id="createUserButton" onclick="createUser();" value="Create User">
+    <input type="button" id="createUserButton" onclick="createUserClick();" value="Create User">
+
+    <script>
+      function createUserClick(){
+        alert(usrNameCreate.value);
+
+        // 1. get the value of the username (and pass) from the text input fields
+
+        // 2. if either are empty (or under 3? chars?) then reject the account creation request
+
+        // 3. use Schema.find({username: username})
+
+        // 4. if that's empty, then the username is VALID (if not, that username is ALREADY IN USE)
+
+        // 5. if valid, then create the account in Users Schema than save to DB
+
+        // 6. if valid, after schema is saved, redired them to home page. 
+
+      }
+
+    </script>
 
 
-    <h1>Add Item</h1>
-    <br>
-    <label for="itemTitle">Title:</label>
-    <input id="itemTitle" type="text"> 
-    <br>
-    <label for="itemDesc">Desc:</label>
-    <input id="itemDesc" type="text"> 
-    <br>
-    <label for="itemImage">Image:</label>
-    <input id="itemImage" type="text"> 
-    <br>
-    <label for="itemPrice">Price:</label>
-    <input id="itemPrice" type="text">
-    <br>
-    <label for="itemStat">Status:</label>
-    <input id="itemStat" type="text">
-    <br>
-    <label for="itemUsr">Username:</label>
-    <input id="itemUsr" type="text">
-    <br>
-    <input type="button" id="createItemButton" onclick="createItem();" value="Create Item">
-  <script>
+      <!-- <script>
     getUsers();
-  </script>
-    </div>
+  </script> -->
+  </div>
 </body>
 </html>

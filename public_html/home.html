@@ -1,12 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <script src="functions.js"></script>
-  <title>HOME</title>
+  <link rel="stylesheet" type="text/css" href="./oosta_style.css">
+  <script type="text/javascript" src="./oosta_functions.js"></script>
+  <title>Ostaa</title>
+  <style>
+    input{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color: lightcyan;
+    font-family: Georgia;
+}
+h1{
+    color: navy;
+    padding-left: 25px;
+    margin-bottom: -20px;
+    padding-top: 20px;
+}
+h2{
+    color: palevioletred;
+    padding-left: 15px;
+    padding-top: 35px;
+}
+
+label{
+    color: navy;
+    padding-right: 10px;
+}
+div{
+    padding-left: 25px;
+}
+
+.bolded{
+    font-weight: 100;
+}
+
+.itemContain{
+    padding-left: 25px;
+
+}
+
+.ostaaContain{
+    border-bottom: 8px navy solid;
+    width: 100vw;
+    height: 100px;
+    margin-bottom: -20px;
+}
+
+.welcomeMessage_HOME{
+    /* font-weight: 100;
+    font-size: 28px;
+    color: palevioletred;
+    padding-top: 25px; */
+    font-weight: bold;
+    margin-top: 50px;
+}
+
+table{
+    width: 100vw;
+    margin-top: 20px;
+}
+
+th{
+    width: 50vw;
+    font-weight: 100;
+    font-size: 20px;
+    color: palevioletred;
+    padding-top: 25px;
+    border: 2px navy solid;
+}
+
+.homePageButton{
+    width: 300px;
+    height: 50px;
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
+#searchListings{
+    width: 120px;
+    height: 50px;
+}
+
+.homeTextInput{
+    height: 40px;
+}
+
+
+
+
+.singleItemContainer{
+    margin: 10px;
+    border: solid 3px navy;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+
+.itemTitle{
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.itemDesc{
+    text-align: left;
+    color: navy;
+    font-size: 16px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+
+  </style>
 </head>
 
 <body>  
-<div>This is the home page.</div>
+  <div class="ostaaContain">
+    <h1>Ostaa</h1>
+    </div>
+
+<table>
+<tr>
+  <th>
+<div class="welcomeMessage_HOME">
+  Welcome! What would you like to explore?
+</div>
+
+<input id="searchText" class="homeTextInput" type="text"> 
+<input type="button" class = "homePageButton" id="searchListings" onclick="searchListingsClick();" value="Search Listings">
+<br>
+
+
+<input type="button" class = "homePageButton" id="viewListingsButton" onclick="createListingsButton();" value="VIEW YOUR LISTINGS">
+<br>
+
+<input type="button" class = "homePageButton" id="viewPurchasesButton" onclick="viewPurchasesClick();" value="VIEW YOUR PURCHASES">
+<br>
+
+<input type="button" class = "homePageButton" id="makeListingButton" onclick="makeListingClick();" value="CREATE A POST">
+<br>
+
+
+</th>
+
+
+<!-- COLUMN #2: -->
+<th>
+  <div id="containRightColumn">
+    <!-- <div id="items"></div> -->
+    <div class="singleItemContainer">
+      <!-- title -->
+      <div class="itemTitle">Sunglasses</div>
+
+      <!-- image -->
+      
+      <!-- description -->
+      <div class="itemDesc">They protect your eyes from the sun as look fresh ASF</div>
+
+      <!-- price -->
+      <div class="itemPrice">$10000000</div>
+
+      <!-- Status/buy button -->
+      <input type="button" class="itemBuyButton" id="buyNowButton" onclick="buyItemClick();" value="Buy Me!">
+
+      <!-- when implementing, make an "if" statement to see the status.
+      if it's not sold, then add a "buy now!" button. 
+
+      if they click that button, it sets the item to sold. (SALE -> SOLD)
+
+      replace the HTML text something indicating it's already been bought
+    
+      maybe have a BOOLEAN field for "sold" or "paused" -->
+    </div>
+
+  </div>
+</th>
+  
+</tr>
+</table>
 </body>
 </html>
