@@ -25,6 +25,20 @@ var Users = new mongoose.Schema( {
 
 var User = mongoose.model('User', Users);
 
+let myNewUser = new User({
+  username: "juliajuliajulia",
+  password: "123456"
+});
+
+let happened = myNewUser.save();
+p.then(() => {
+  res.end('CREATED SUCCESSFULLY');
+});
+p.catch(() => {
+  res.end("no save :(")
+});
+
+
 var Items = new mongoose.Schema( {
     title: String,
     disc: String,
