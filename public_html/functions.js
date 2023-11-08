@@ -11,7 +11,8 @@ function createUser(){
   
   
   function getUsers() {
-    let p = fetch('/get/users/');
+      let url = '/get/users';
+    let p = fetch(url);
     let rp = p.then( (response) => {
       return response.json();
     }).then((objects) => { 
