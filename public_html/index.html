@@ -138,7 +138,7 @@ th{
       <a href="home.html">
       <input type="button" id="loginButton" onclick="loginButtonClick();" value="Login">
       </a>
-      <!-- <script>
+      <script>
         function loginButtonClick(){
           alert(usrNameLogin.value);
 
@@ -159,9 +159,24 @@ th{
           else{
 
           // 2. use Schema.find({username: username})
-          User.find({username: useIn});
+          let p = User.find({username: useIn});
 
           // 3. if that's expty, reject the login
+          p.then((documents) => {
+            if (documents.length < 1){
+              // then it's an invalid request.
+              alert("Invalid username.");
+            } else {
+              let userDoc = documents[0];
+              let userPassword = userDoc.password;
+
+              if (userPassword == passIn){
+                // success
+                alert("Login successful!");
+                fetch('/home');
+              }
+            }
+          })
 
           // 4. if it's there, compare its password
 
@@ -169,13 +184,13 @@ th{
 
           // 6. (if valid) move them onto the home.html page
           // fetch('home.html');
-          fetch('/home');
+          // fetch('/home');
 
           } // this is the end of the "else{" of line 159
 
         }
 
-      </script> -->
+      </script>
 
     <h2>Create Account</h2>
     <br>
