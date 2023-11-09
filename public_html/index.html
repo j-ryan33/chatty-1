@@ -135,14 +135,31 @@ th{
       <label for="password">Password: </label>
       <input id="passwordLogin" type="text">
       <br>
+      <a href="home.html">
       <input type="button" id="loginButton" onclick="loginButtonClick();" value="Login">
-      <script>
+      </a>
+      <!-- <script>
         function loginButtonClick(){
           alert(usrNameLogin.value);
 
           // 1. get the value of the username (and pass) from the text input fields
+          let useIn = document.getElementById("usrNameLogin").value;
+          let passIn = document.getElementById("passwordLogin").value;
+          console.log("login request...");
+          console.log(useIn);
+          console.log(passIn);
+
+          // (check if either are empty)
+          if (useIn.length <= 1){
+            alert("Invalid username.");
+          }
+          else if (passIn.length <= 1){
+            alert("Invalid password.");
+          }
+          else{
 
           // 2. use Schema.find({username: username})
+          User.find({username: useIn});
 
           // 3. if that's expty, reject the login
 
@@ -151,10 +168,14 @@ th{
           // 5. if password is the same, let them in. Otherwise, reject.
 
           // 6. (if valid) move them onto the home.html page
+          // fetch('home.html');
+          fetch('/home');
+
+          } // this is the end of the "else{" of line 159
 
         }
 
-      </script>
+      </script> -->
 
     <h2>Create Account</h2>
     <br>

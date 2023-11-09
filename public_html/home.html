@@ -139,17 +139,35 @@ th{
 <br>
 
 
-<input type="button" class = "homePageButton" id="viewListingsButton" onclick="createListingsButton();" value="VIEW YOUR LISTINGS">
+<input type="button" class = "homePageButton" id="viewListingsButton" onclick="createListingsClick();" value="VIEW YOUR LISTINGS">
 <br>
 
 <input type="button" class = "homePageButton" id="viewPurchasesButton" onclick="viewPurchasesClick();" value="VIEW YOUR PURCHASES">
 <br>
 
-<input type="button" class = "homePageButton" id="makeListingButton" onclick="makeListingClick();" value="CREATE A POST">
+<!-- <input type="button" class = "homePageButton" id="makeListingButton" onclick="makeListingClick();" value="CREATE A POST"> -->
+<input type="button" class = "homePageButton" id="makeListingButton" onclick="window.location.href='post.html';" value="CREATE A POST">
+
 <br>
 
 
 </th>
+<!-- <script>
+  function displayItems_HOME(){
+    /*
+    this function accepts an ITEM schema as a parameter
+    and then returns the inner HTML that the 
+
+    the parameter can be either:
+      - "all"  :  all items
+      - "sea"  :  search result items
+      - "pur"  :  purchased items of the user
+      - "lis"  :  listings of the user
+    */
+    let htmlElem = document.getElementById("containRightColumn");
+    
+  }
+</script> -->
 
 
 <!-- COLUMN #2: -->

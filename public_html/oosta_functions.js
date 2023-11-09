@@ -32,3 +32,31 @@ function createUser(){
 //   function createItem() {
 //     pass;
 //   }
+
+
+//////////// from home.html: //////////////
+
+function searchListingsClick(){
+  // get cur value in the txt input(ID: searchText)
+}
+
+function createListingsClick(){
+  // get all of the values that are in the user's purchases
+  // then make them the inner-html in right-hand column
+}
+
+function viewPurchasesClick() {
+  // same as listings, but purchases list instead
+}
+
+
+//////////// from post.html: //////////////
+
+function createPostButton(){
+  // Do other operations to store the info in database
+  // also redirect to home page again!
+
+  /*
+  used a mongo dropolet instread of web app!!!!!
+  */
+}
