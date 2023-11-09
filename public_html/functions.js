@@ -1,3 +1,13 @@
+/*
+Author:  Julia Ryan
+Course:  CSC337 (FA23, Ben)
+Project: PA9 - Ostaa
+File:    oosta_functions.js
+
+Creates the JavaScript that will be used in
+the vaious pages within public_html directory.
+*/
+
 function createUser(){
     let usr = document.getElementById('usrName').value;
     let pass = document.getElementById('password').value;
@@ -31,4 +41,31 @@ function createUser(){
 //function createItem() {
   
 //}
+
+//////////// from home.html: //////////////
+
+function searchListingsClick(){
+  // get cur value in the txt input(ID: searchText)
+}
+
+function createListingsClick(){
+  // get all of the values that are in the user's purchases
+  // then make them the inner-html in right-hand column
+}
+
+function viewPurchasesClick() {
+  // same as listings, but purchases list instead
+}
+
+
+//////////// from post.html: //////////////
+
+function createPostButton(){
+  // Do other operations to store the info in database
+  // also redirect to home page again!
+
+  /*
+  used a mongo dropolet instread of web app!!!!!
+  */
+}
 
