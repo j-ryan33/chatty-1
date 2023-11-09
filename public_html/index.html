@@ -205,9 +205,13 @@ th{
 
     <script>
       function createUserClick(){
-        alert(usrNameCreate.value);
+        // alert(usrNameCreate.value);
+
+        let useIn = document.getElementById("usrNameCreate").value;
+        let passIn = document.getElementById("passwordCreate").value;
 
         // 1. get the value of the username (and pass) from the text input fields
+        
 
         // 2. if either are empty (or under 3? chars?) then reject the account creation request
 
@@ -216,6 +220,19 @@ th{
         // 4. if that's empty, then the username is VALID (if not, that username is ALREADY IN USE)
 
         // 5. if valid, then create the account in Users Schema than save to DB
+
+        let newUser = new User({
+          username: useIn,
+          password: passIn
+        })
+
+        let saved = newUser.save();
+        saved.then(() => {
+          alert('CREATED SUCCESSFULLY');
+        });
+        saved.catch(() => {
+          alert("no save :(")
+        });
 
         // 6. if valid, after schema is saved, redired them to home page. 
 
