@@ -1,7 +1,7 @@
 function createUser(){
     let usr = document.getElementById('usrName').value;
     let pass = document.getElementById('password').value;
-    let p = fetch('/add/user/' + usr + "/" + encodeURIComponent(pass));
+    let p = fetch('/add/user/' + usr + "/" + pass);
     p.then((response) =>{
       return response.text();
     }).then((text) => {
