@@ -129,10 +129,10 @@ th{
     <div id="bodyContain">
       <h2>Login</h2>
       <br>
-      <label for="usrName">Username: </label>
+      <label for="usrNameLogin">Username: </label>
       <input id="usrNameLogin" type="text"> 
       <br>
-      <label for="password">Password: </label>
+      <label for="passwordLogin">Password: </label>
       <input id="passwordLogin" type="text">
       <br>
       <a href="home.html">
@@ -172,6 +172,7 @@ th{
 
               if (userPassword == passIn){
                 // success
+                
                 alert("Login successful!");
                 fetch('/home');
               }
@@ -194,10 +195,10 @@ th{
 
     <h2>Create Account</h2>
     <br>
-    <label for="usrName">Username: </label>
+    <label for="usrNameCreate">Username: </label>
     <input id="usrNameCreate" type="text"> 
     <br>
-    <label for="password">Password: </label>
+    <label for="passwordCreate">Password: </label>
     <input id="passwordCreate" type="text">
     <br>
     <input type="button" id="createUserButton" onclick="createUserClick();" value="Create User">
@@ -226,6 +227,8 @@ th{
       <!-- <script>
     getUsers();
   </script> -->
+  <input type="button" id="TESTING_BYPASS" value="Testing bypass: HOME">
+
   </div>
 </body>
 </html>
