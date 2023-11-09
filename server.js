@@ -16,6 +16,8 @@ const { use } = require('express/lib/application');
 // const connection = 'mongodb+srv://doadmin:94B6u27tbJX1P83Q@chatty-db-2b2a9a25.mongo.ondigitalocean.com/admin?tls=true&authSource=admin&replicaSet=chatty-db';
 const connection = 'mongodb://127.0.0.1/ostaa';
 
+
+
 mongoose.connect(connection);
 mongoose.connection.on('error', () => {
   console.log('Connection issue with mongoDB :(');
@@ -208,12 +210,31 @@ app.get('/get/user/:username'), (req, res) =>{
     
 // });
 
-app.post('/add/user/', (req, res) => {
-  let userToBeSaved = req.body;
+// app.post('/add/user/', (req, res) => {
+//   let userToBeSaved = req.body;
+//   //parameter=value&also=another
+
+//   var newUser = new User(userToBeSaved);
+//   let newUsr = newUser.save();
+//   newUsr.then( (doc) => { 
+//     res.end('SAVED SUCCESFULLY');
+//   });
+//   newUsr.catch( (err) => { 
+//     console.log("COULD NOT CREATE USER!!!");
+//     res.end("COULD NOT CREATE USER!!!");
+//   });
+// });
+app.post('/add/user/:usrname/:pass', (req, res) => {
+  console.log("saving user....");
+  // let userToBeSaved = req.body;
+
+  let userName = req.params.usrname;
+  let passWord = req.params.pass;
   //parameter=value&also=another
 
-  var newUser = new User(userToBeSaved);
+  var newUser = new User({username: userName, password: passWord});
   let newUsr = newUser.save();
+
   newUsr.then( (doc) => { 
     res.end('SAVED SUCCESFULLY');
   });
