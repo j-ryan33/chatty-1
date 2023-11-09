@@ -224,9 +224,9 @@ th{
         let newUser = new User({
           username: useIn,
           password: passIn
-        })
-
+        });
         let saved = newUser.save();
+
         saved.then(() => {
           alert('CREATED SUCCESSFULLY');
         });
